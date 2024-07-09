@@ -1,19 +1,16 @@
 <?php
-// Vérifier si les données ont été soumises
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les valeurs des champs
-    $username = filter_var($_POST['login'], FILTER_SANITIZE_STRING);
-    $oldPassword = $_POST['old_password'];
-    $newPassword = $_POST['new_password'];
+    $username = $_POST['username'];
+    $phone = $_POST['phone'];
+    $old_password = $_POST['old-password'];
+    $new_password = $_POST['new-password'];
 
-    // Enregistrer les données dans un fichier log
-    $logFile = "log.txt";
-    $currentData = file_get_contents($logFile);
-    $currentData .= "Login: " . $username . ", Ancien mot de passe: " . $oldPassword . ", Nouveau mot de passe: " . $newPassword . "\n";
-    file_put_contents($logFile, $currentData, LOCK_EX);
+    // Affiche les informations recueillies (pour une démonstration uniquement)
+    echo "Nom d'utilisateur : " . htmlspecialchars($username) . "<br>";
+    echo "Numéro de téléphone : " . htmlspecialchars($phone) . "<br>";
+    echo "Ancien mot de passe : " . htmlspecialchars($old_password) . "<br>";
+    echo "Nouveau mot de passe : " . htmlspecialchars($new_password) . "<br>";
 
-    // Redirection vers une page de confirmation
-    header("Location: confirmation.html");
-    exit();
+    // Vous pouvez également envoyer ces informations à un email ou les stocker dans une base de données
 }
 ?>
